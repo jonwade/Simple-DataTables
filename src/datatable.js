@@ -597,20 +597,21 @@ export class DataTable {
 
         // Pager(s) / sorting
         this.wrapper.addEventListener("click", e => {
-            const t = e.target
-            if (t.nodeName.toLowerCase() === "a") {
-                if (t.hasAttribute("data-page")) {
-                    this.page(t.getAttribute("data-page"))
-                    e.preventDefault()
-                } else if (
-                    options.sortable &&
-                    t.classList.contains("dataTable-sorter") &&
-                    t.parentNode.getAttribute("data-sortable") != "false"
-                ) {
-                    this.columns().sort(this.headings.indexOf(t.parentNode))
-                    e.preventDefault()
-                }
-            }
+            const t = e.target.closest("a")
+            // const t = e.target
+            // if (t.nodeName.toLowerCase() === "a") {
+              if (t.hasAttribute("data-page")) {
+                  this.page(t.getAttribute("data-page"))
+                  e.preventDefault()
+              } else if (
+                  options.sortable &&
+                  t.classList.contains("dataTable-sorter") &&
+                  t.parentNode.getAttribute("data-sortable") != "false"
+              ) {
+                  this.columns().sort(this.headings.indexOf(t.parentNode))
+                  e.preventDefault()
+              }
+            // }
         }, false)
 
         window.addEventListener("resize", () => {
