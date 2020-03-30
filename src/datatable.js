@@ -600,6 +600,7 @@ export class DataTable {
             const t = e.target.closest("a")
             // const t = e.target
             // if (t.nodeName.toLowerCase() === "a") {
+            if (typeof t !== 'undefined') {
               if (t.hasAttribute("data-page")) {
                   this.page(t.getAttribute("data-page"))
                   e.preventDefault()
@@ -611,7 +612,7 @@ export class DataTable {
                   this.columns().sort(this.headings.indexOf(t.parentNode))
                   e.preventDefault()
               }
-            // }
+            }
         }, false)
 
         window.addEventListener("resize", () => {
